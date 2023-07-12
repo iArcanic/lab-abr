@@ -1,0 +1,10 @@
+# eth1 exists because there is a r[1] entry in lab.conf
+ip link set dev eth1 address 02:81:81:81:81:81
+ip addr add 172.28.97.41/29 dev eth1
+ip link set up dev eth1
+
+# eth2 exists because there is a r[2] entry in lab.conf
+ip link set dev eth2 address 02:82:82:82:82:82
+ip addr add 10.0.0.1/27 dev eth2
+ip link set up dev eth2
+
