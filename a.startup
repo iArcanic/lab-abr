@@ -1,15 +1,5 @@
 # eth0 exists because there is a a[0] entry in lab.conf
-# first, we give it an easily recongnisable MAC address
-# 02:xx:xx:xx:xx:xx means it is locally, not globally administered
-ip link set dev eth0 address 02:a0:a0:a0:a0:a0
-
-# IP4 private address of our choosing
-# the /29 defines which other addresses we expect on the LAN
 ip addr add 172.28.97.42/29 dev eth0
-
-# the configured network card is now made active
 ip link set up dev eth0
-
-# routing information tells how to get to IP4 addresses not on our LAN
 ip route add 10.0.0.0/27 via 172.28.97.41 dev eth0
-
+ip route add 192.168.0.0/24 via 172.28.97.41 dev eth0
