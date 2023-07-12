@@ -9,3 +9,11 @@ ip link set up dev eth2
 # eth3 exists because there is a r[3] entry in lab.conf
 ip addr add 192.168.0.1/24 dev eth3
 ip link set up dev eth3
+
+# Firewall rules
+
+# Allow incoming ICMP Echo Request (ping) from machine A to machine B
+iptables -A FORWARD -s 172.28.97.42 -d 10.0.0.2 -p icmp --icmp-type 8 -m state --state NEW,ESTABLISHED -j ACCEPT
+
+# Drop incoming ICMP Echo Request (ping) from machine B to machine A
+iptables -A FORWARD -s 10.0.0.2 -d 172.28.97.42 -p icmp --icmp-type 8 -m state --state NEW,ESTABLISHED -j DROP
