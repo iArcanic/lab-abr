@@ -9,3 +9,6 @@ ip link set up dev eth2
 # eth3 exists because there is a r[3] entry in lab.conf
 ip addr add 192.168.0.1/24 dev eth3
 ip link set up dev eth3
+
+# Enable IP forwarding
+sysctl -w net.ipv4.ip_forward=1
